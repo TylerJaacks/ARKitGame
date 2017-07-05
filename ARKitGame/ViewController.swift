@@ -13,6 +13,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var debugHighscoreLabel: UILabel!
+    @IBOutlet weak var debugHighscoreText: UITextField!
+    
+    @IBAction func DebugMenuActivator(_ sender: Any) {
+        alertDialog(alertTitle: "Debug Mode Activated", alertMessage: "You have activated debug mode!")
+        
+        
+    }
+    
+    @IBAction func setHighScoreButton(_ sender: Any) {
+        defaults.set(Int(debugHighscoreText.text!), forKey: "highscore")
+    }
     
     var score:Int = 0 {
         didSet {
@@ -28,15 +40,20 @@ class ViewController: UIViewController {
     
     var gameTime = Timer()
     
-    var highScore:Int = 0
+    var highScore:Int = 0 {
+        didSet {
+            //debugHighscoreLabel.text = "Current High Score is: \(highScore)"
+        }
+    }
     
     var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let key = UserDefaults.standard.object(forKey: "highscore") {
+        if UserDefaults.standard.object(forKey: "highscore") != nil {
             highScore = loadHighScore()
+            //debugHighscoreLabel.text = "Current High Score is: \(highScore)"
         } else {
             saveHighScore()
         }
@@ -82,14 +99,14 @@ class ViewController: UIViewController {
         if (timeLeft > 0) {
             timeLeft -= 1;
         } else if (score <= highScore) {
-            scoreAlert()
+            alertDialog(alertTitle: "Your ARKit Game Score!", alertMessage: "Score is \(self.score)")
             
             self.gameTime.invalidate()
             self.score = 0
             self.timeLeft = 60
             
         } else if (score > highScore) {
-            highScoreAlert()
+            alertDialog(alertTitle: "You Broke the ARKit Game High Score!", alertMessage: "The new Highscore is \(self.score)")
             
             saveHighScore()
             
@@ -111,23 +128,7 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(ship)
     }
     
-    func scoreAlert() {
-        let title:String = "Your ARKit Game Score!"
-        let message: String = "Score is " + "\(score)"
-        let scoreAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        scoreAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-            scoreAlert.dismiss(animated: true, completion: nil)
-            
-            self.gameTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(ViewController.action), userInfo:nil, repeats:true)
-        }))
-        
-        self.present(scoreAlert, animated: true, completion: nil)
-    }
-    
-    func highScoreAlert() {
-        let title:String = "You Broke the ARKit Game High Score!"
-        let message: String = "Score is " + "\(score)"
+    func alertDialog(alertTitle title: String, alertMessage message: String) {
         let scoreAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         scoreAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
@@ -140,13 +141,13 @@ class ViewController: UIViewController {
     }
     
     func loadHighScore() -> Int {
-        print(defaults.integer(forKey: "highscore"))
         return defaults.integer(forKey: "highscore")
     }
     
     func saveHighScore() {
         highScore = score
         defaults.set(highScore, forKey: "highscore")
+        debugHighscoreLabel.text = "Current High Score is: \(highScore)"
     }
     
     func randomPosition (lowerBound lower:Float, upperBound upper:Float) -> Float {
