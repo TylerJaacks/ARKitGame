@@ -15,9 +15,7 @@
 [*] = Working [✔️] = Done
 
 ## Discovered Bugs:
-- Characters are too big on smaller devices.
-- Pinky completly freeze itself when it kills the player
-- Pinky's clone health display are incorrect. 
+- Activating the debug menu, long holding the score counter crashes the game.
 
 ## Main Accomplishments:
 - [✔️] Got ARKit fully working with SceneKit.
