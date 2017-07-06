@@ -10,7 +10,11 @@
 - Using Xcode's simulator will not show the camera. Use Device for best experience.
 
 ## TODO list:
-  - [] Debug menu
+  - [ ] Debug menu.
+  - [ ] Add GameCenter support.
+  - [ ] Redesign the UI.
+  - [ ] Code cleanup.
+  - [ ] Add more content, to make this a better and more fun game.
 
 [*] = Working [✔️] = Done
 
