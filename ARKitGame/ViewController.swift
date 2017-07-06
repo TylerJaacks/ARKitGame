@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     @IBAction func DebugMenuActivator(_ sender: Any) {
         alertDialog(alertTitle: "Debug Mode Activated", alertMessage: "You have activated debug mode!")
         
-        
+        //let vc = self.storyboard!.instantiateViewController(withIdentifier: "DebugMenu") as! ViewController
+        //self.navigationController!.pushViewController(vc, animated: true)
     }
     
     @IBAction func setHighScoreButton(_ sender: Any) {
