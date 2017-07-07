@@ -20,7 +20,6 @@ I learned some Swift, iOS Stuff, ARKit, and SceneKit using some help from tutori
 [*] = Working [✔️] = Done
 
 ## Discovered Bugs:
-- Activating the debug menu, long holding the score counter crashes the game.
 
 ## Main Accomplishments:
 - [✔️] Got ARKit fully working with SceneKit.
