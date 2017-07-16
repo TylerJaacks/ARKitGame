@@ -27,7 +27,7 @@ I learned some Swift, iOS Stuff, ARKit, and SceneKit using some help from tutori
 - [✔️] Learned some iOS Developement.
 
 ## Additional Sources
-- Stackoverflow, used samples for user storage and NSTimer help, sorry I don't remember ever post I viewed.
+- Stackoverflow, used samples for user storage and NSTimer help, sorry I don't remember every post I viewed.
 - Brian Advent, for his YouTube tutorial on using ARKit and SceneKit.
 - The Swift Guy, for his YouTube tutorial on the NSTimer and AlertDialog.
 - Wong Guan, for his README that I am using as a template.
