@@ -12,7 +12,7 @@ I learned some Swift, iOS Stuff, ARKit, and SceneKit using some help from tutori
 
 ## TODO list:
   - [] Debug menu.
-  - [] Add GameCenter support.
+  - [✔️] Add GameCenter support.
   - [] Redesign the UI.
   - [] Code cleanup.
   - [] Add more content, to make this a better and more fun game.
@@ -20,15 +20,16 @@ I learned some Swift, iOS Stuff, ARKit, and SceneKit using some help from tutori
 [*] = Working [✔️] = Done
 
 ## Discovered Bugs:
-- Activating the debug menu, long holding the score counter crashes the game.
 
 ## Main Accomplishments:
 - [✔️] Got ARKit fully working with SceneKit.
 - [✔️] Learned some Swift.
 - [✔️] Learned some iOS Developement.
+- [✔️] GameCenter support.
 
 ## Additional Sources
-- Stackoverflow, used samples for user storage and NSTimer help, sorry I don't remember ever post I viewed.
+- Stackoverflow, used samples for user storage and NSTimer help, sorry I don't remember every post I viewed.
 - Brian Advent, for his YouTube tutorial on using ARKit and SceneKit.
 - The Swift Guy, for his YouTube tutorial on the NSTimer and AlertDialog.
 - Wong Guan, for his README that I am using as a template.
+- Francesco Franchini's tutorial on adding GameCenter support.
