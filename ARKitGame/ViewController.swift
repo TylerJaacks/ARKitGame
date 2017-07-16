@@ -8,6 +8,7 @@
 
 import UIKit
 import ARKit
+import GameKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
@@ -39,18 +40,25 @@ class ViewController: UIViewController {
         }
     }
     
-    var gameTime = Timer()
-    
     var highScore:Int = 0 {
         didSet {
             //debugHighscoreLabel.text = "Current High Score is: \(highScore)"
         }
     }
     
+    var gameTime = Timer()
+    
     var defaults = UserDefaults.standard
+    
+    var gcEnabled = Bool()
+    var gcDefaultLeaderboard = String()
+    
+    let LEADERBOARD_ID: String = "com.tylerj.arkitgame"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //authenticateLocalPlayer()
         
         if UserDefaults.standard.object(forKey: "highscore") != nil {
             highScore = loadHighScore()
@@ -96,6 +104,10 @@ class ViewController: UIViewController {
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     @objc func action() {
         if (timeLeft > 0) {
             timeLeft -= 1;
@@ -110,6 +122,8 @@ class ViewController: UIViewController {
             alertDialog(alertTitle: "You Broke the ARKit Game High Score!", alertMessage: "The new Highscore is \(self.score)")
             
             saveHighScore()
+            
+            //submitUserHighScoreToGameCenter()
             
             self.gameTime.invalidate()
             self.score = 0
@@ -138,6 +152,14 @@ class ViewController: UIViewController {
             self.gameTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(ViewController.action), userInfo:nil, repeats:true)
         }))
         
+        scoreAlert.addAction(UIAlertAction(title: "Leaderboard", style: UIAlertActionStyle.default, handler: { (action) in
+            scoreAlert.dismiss(animated: true, completion: nil)
+            
+            self.gameTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(ViewController.action), userInfo:nil, repeats:true)
+            
+            self.checkGameCenterLeaderboard()
+        }))
+        
         self.present(scoreAlert, animated: true, completion: nil)
     }
     
@@ -155,7 +177,51 @@ class ViewController: UIViewController {
         return Float(arc4random()) / Float(UInt32.max) * (lower - upper) + upper
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                self.present(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
+                self.gcEnabled = true
+                
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
+                    if error != nil { print(error!)
+                    } else { self.gcDefaultLeaderboard = leaderboardIdentifer! }
+                })
+                
+            } else {
+                self.gcEnabled = false
+                print("Local player could not be authenticated!")
+                print(error!)
+            }
+        }
+    }
+    
+    func submitUserHighScoreToGameCenter() {
+        let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
+        
+        bestScoreInt.value = Int64(highScore)
+        GKScore.report([bestScoreInt]) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Best Score submitted to your Leaderboard!")
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func checkGameCenterLeaderboard() {
+        //let gcVC = GKGameCenterViewController()
+
+        //gcVC.gameCenterDelegate = self
+        //gcVC.viewState = .leaderboards
+        //gcVC.leaderboardIdentifier = LEADERBOARD_ID
+        //present(gcVC, animated: true, completion: nil)
     }
 }
