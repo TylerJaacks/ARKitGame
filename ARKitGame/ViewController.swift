@@ -19,9 +19,6 @@ class ViewController: UIViewController {
     
     @IBAction func DebugMenuActivator(_ sender: Any) {
         alertDialog(alertTitle: "Debug Mode Activated", alertMessage: "You have activated debug mode!")
-        
-        //let vc = self.storyboard!.instantiateViewController(withIdentifier: "DebugMenu") as! ViewController
-        //self.navigationController!.pushViewController(vc, animated: true)
     }
     
     @IBAction func setHighScoreButton(_ sender: Any) {
@@ -40,9 +37,9 @@ class ViewController: UIViewController {
         }
     }
     
-    var highScore:Int = 0 {
+    var highScore: Int = 0 {
         didSet {
-            //debugHighscoreLabel.text = "Current High Score is: \(highScore)"
+            
         }
     }
     
@@ -62,7 +59,6 @@ class ViewController: UIViewController {
         
         if UserDefaults.standard.object(forKey: "highscore") != nil {
             highScore = loadHighScore()
-            //debugHighscoreLabel.text = "Current High Score is: \(highScore)"
         } else {
             saveHighScore()
         }
@@ -170,7 +166,6 @@ class ViewController: UIViewController {
     func saveHighScore() {
         highScore = score
         defaults.set(highScore, forKey: "highscore")
-        debugHighscoreLabel.text = "Current High Score is: \(highScore)"
     }
     
     func randomPosition (lowerBound lower:Float, upperBound upper:Float) -> Float {

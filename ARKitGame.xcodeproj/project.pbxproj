@@ -59,6 +59,7 @@
 		362B74151F08A90D003341B3 /* ARKitGame */ = {
 			isa = PBXGroup;
 			children = (
+				36F2E5B01F68590600CF2EE6 /* ARObjects */,
 				362B74161F08A90D003341B3 /* AppDelegate.swift */,
 				362B74181F08A90D003341B3 /* ViewController.swift */,
 				362B741A1F08A90D003341B3 /* Main.storyboard */,
@@ -66,7 +67,6 @@
 				362B741F1F08A90D003341B3 /* LaunchScreen.storyboard */,
 				362B74221F08A90D003341B3 /* Info.plist */,
 				362B74281F08B077003341B3 /* art.scnassets */,
-				362B742A1F08B104003341B3 /* Spaceship.swift */,
 			);
 			path = ARKitGame;
 			sourceTree = "<group>";
@@ -76,6 +76,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36F2E5B01F68590600CF2EE6 /* ARObjects */ = {
+			isa = PBXGroup;
+			children = (
+				362B742A1F08B104003341B3 /* Spaceship.swift */,
+			);
+			path = ARObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +206,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -253,6 +263,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
