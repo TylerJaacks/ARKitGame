@@ -10,7 +10,7 @@ import UIKit
 import ARKit
 import GameKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GKGameCenterControllerDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -50,12 +50,13 @@ class ViewController: UIViewController {
     var gcEnabled = Bool()
     var gcDefaultLeaderboard = String()
     
+    // TODO Edit this to the actual leaderboard id.
     let LEADERBOARD_ID: String = "com.tylerj.arkitgame"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //authenticateLocalPlayer()
+        authenticateLocalPlayer()
         
         if UserDefaults.standard.object(forKey: "highscore") != nil {
             highScore = loadHighScore()
@@ -119,7 +120,7 @@ class ViewController: UIViewController {
             
             saveHighScore()
             
-            //submitUserHighScoreToGameCenter()
+            submitUserHighScoreToGameCenter()
             
             self.gameTime.invalidate()
             self.score = 0
@@ -212,11 +213,11 @@ class ViewController: UIViewController {
     }
     
     func checkGameCenterLeaderboard() {
-        //let gcVC = GKGameCenterViewController()
+        let gcVC = GKGameCenterViewController()
 
-        //gcVC.gameCenterDelegate = self
-        //gcVC.viewState = .leaderboards
-        //gcVC.leaderboardIdentifier = LEADERBOARD_ID
-        //present(gcVC, animated: true, completion: nil)
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = .leaderboards
+        gcVC.leaderboardIdentifier = LEADERBOARD_ID
+        present(gcVC, animated: true, completion: nil)
     }
 }
