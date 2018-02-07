@@ -50,8 +50,7 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
     var gcEnabled = Bool()
     var gcDefaultLeaderboard = String()
     
-    // TODO Edit this to the actual leaderboard id.
-    let LEADERBOARD_ID: String = "com.tylerj.arkitgame"
+    let LEADERBOARD_ID: String = "com.tylerj.arkitgame1.Highscore"
     
     override func viewDidLoad() {
         super.viewDidLoad()
