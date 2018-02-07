@@ -50,7 +50,7 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
     var gcEnabled = Bool()
     var gcDefaultLeaderboard = String()
     
-    let LEADERBOARD_ID: String = "com.tylerj.arkitgame1.Highscore"
+    let LEADERBOARD_ID: String = "com.tylerj.arkitgame.Highscore"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +109,8 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
             timeLeft -= 1;
         } else if (score <= highScore) {
             alertDialog(alertTitle: "Your ARKit Game Score!", alertMessage: "Score is \(self.score)")
+            
+            submitUserHighScoreToGameCenter()
             
             self.gameTime.invalidate()
             self.score = 0
@@ -182,8 +184,13 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
                 self.gcEnabled = true
                 
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
-                    if error != nil { print(error!)
-                    } else { self.gcDefaultLeaderboard = leaderboardIdentifer! }
+                    if error != nil {
+                        print("\n")
+                        print(error!)
+                        print("\n")
+                    } else {
+                        self.gcDefaultLeaderboard = leaderboardIdentifer!
+                    }
                 })
                 
             } else {
@@ -197,7 +204,7 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
     func submitUserHighScoreToGameCenter() {
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
         
-        bestScoreInt.value = Int64(highScore)
+        bestScoreInt.value = Int64(score)
         GKScore.report([bestScoreInt]) { (error) in
             if error != nil {
                 print(error!.localizedDescription)
