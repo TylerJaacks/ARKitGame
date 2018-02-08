@@ -110,7 +110,7 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
         } else if (score <= highScore) {
             alertDialog(alertTitle: "Your ARKit Game Score!", alertMessage: "Score is \(self.score)")
             
-            submitUserHighScoreToGameCenter()
+            // submitUserHighScoreToGameCenter()
             
             self.gameTime.invalidate()
             self.score = 0
@@ -152,8 +152,6 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
         
         scoreAlert.addAction(UIAlertAction(title: "Leaderboard", style: UIAlertActionStyle.default, handler: { (action) in
             scoreAlert.dismiss(animated: true, completion: nil)
-            
-            self.gameTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(ViewController.action), userInfo:nil, repeats:true)
             
             self.checkGameCenterLeaderboard()
         }))
@@ -216,6 +214,8 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
+        
+        self.gameTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(ViewController.action), userInfo:nil, repeats:true)
     }
     
     func checkGameCenterLeaderboard() {
