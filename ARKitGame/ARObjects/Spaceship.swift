@@ -11,7 +11,9 @@ import SceneKit
 
 class Spaceship: SCNNode {
     func loadModel() {
-        guard let virtualObjectScene = SCNScene(named: "Art.scnassets/ship.scn") else { return }
+        guard let virtualObjectScene = SCNScene(named: "Art.scnassets/Ship.scn") else {
+            return
+        }
         
         let wrapperNode = SCNNode()
         

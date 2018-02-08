@@ -13,8 +13,8 @@
 		362B741C1F08A90D003341B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362B741A1F08A90D003341B3 /* Main.storyboard */; };
 		362B741E1F08A90D003341B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 362B741D1F08A90D003341B3 /* Assets.xcassets */; };
 		362B74211F08A90D003341B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362B741F1F08A90D003341B3 /* LaunchScreen.storyboard */; };
-		362B74291F08B077003341B3 /* Art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 362B74281F08B077003341B3 /* Art.scnassets */; };
 		362B742B1F08B104003341B3 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B742A1F08B104003341B3 /* Spaceship.swift */; };
+		36EBA4DC202BFFFC008D175F /* Art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 36EBA4DB202BFFFC008D175F /* Art.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		362B741D1F08A90D003341B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		362B74201F08A90D003341B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		362B74221F08A90D003341B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		362B74281F08B077003341B3 /* Art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Art.scnassets; sourceTree = "<group>"; };
 		362B742A1F08B104003341B3 /* Spaceship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
+		36EBA4DB202BFFFC008D175F /* Art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Art.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +67,9 @@
 				362B74181F08A90D003341B3 /* ViewController.swift */,
 				362B741A1F08A90D003341B3 /* Main.storyboard */,
 				362B741D1F08A90D003341B3 /* Assets.xcassets */,
+				36EBA4DB202BFFFC008D175F /* Art.scnassets */,
 				362B741F1F08A90D003341B3 /* LaunchScreen.storyboard */,
 				362B74221F08A90D003341B3 /* Info.plist */,
-				362B74281F08B077003341B3 /* Art.scnassets */,
 			);
 			path = ARKitGame;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362B74211F08A90D003341B3 /* LaunchScreen.storyboard in Resources */,
-				362B74291F08B077003341B3 /* Art.scnassets in Resources */,
+				36EBA4DC202BFFFC008D175F /* Art.scnassets in Resources */,
 				362B741E1F08A90D003341B3 /* Assets.xcassets in Resources */,
 				362B741C1F08A90D003341B3 /* Main.storyboard in Resources */,
 			);
